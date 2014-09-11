@@ -1,0 +1,4 @@
+#!/bin/bash
+
+killall server
+go run ./server.go &

@@ -1,0 +1,442 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Actual website styles */
+
+body {
+	font-family: "futura-pt", sans-serif;	
+	background-color: #43A6C7;
+	font-style: normal;
+	color: #F1F1F1;	
+}
+
+#top {
+	position: fixed;
+	min-width: 800px;	
+}
+
+#heading {
+	margin-left: 0.4em;
+	margin-top: 1em;
+	margin-bottom: 0.4em;
+	font-size: 6em;
+	font-weight: 700;
+}
+
+.contact {
+	display: inline-block;
+	padding-left: 2em;
+}
+
+@-webkit-keyframes hoverUp { from { -webkit-transform: translate3d(0px, 0px, 0px);} to { -webkit-transform: translate3d(0px,-5px, 0px);}}
+@-moz-keyframes hoverUp { from { -moz-transform: translate3d(0px, 0px, 0px);} to { -moz-transform: translate3d(0px,-5px,0px);}}
+@-o-keyframes hoverUp { from { -o-transform: translate3d(0px,0px,0px);} to { -o-transform: translate3d(0px,-5px,0px);}}
+@keyframes hoverUp { from { transform: translate3d(0px,0px,0px);} to { transform: translate3d(0px,-5px,0px);}}
+
+@-webkit-keyframes hoverDown { from { -webkit-transform: translate3d(0px,-5px,0px);} to { -webkit-transform: translate3d(0px,0px,0px);}}
+@-moz-keyframes hoverDown { from { -moz-transform: translate3d(0px,-5px,0px);} to { -moz-transform: translate3d(0px,0px,0px);}}
+@-o-keyframes hoverDown { from { -o-transform: translate3d(0px,-5px,0px);} to { -o-transform: translate3d(0px,0px,0px);}}
+@keyframes hoverDown { from { transform: translate3d(0px,-5px,0px);} to { transform: translate3d(0px,0px,0px);}}
+
+#contact {
+	margin-left: 2.4em;
+
+	-webkit-animation-delay: 0.3s;
+	-moz-animation-delay: 0.3s;
+	-o-animation-delay: 0.3s;
+	animation-delay: 0.3s;
+}
+
+#facebook {
+	height: 80px;
+  width: 80px;
+	background: url(/img/2/facebook.png) no-repeat;
+  background-size: 80px 80px;	
+}
+
+#linkedin {
+	height: 80px;
+  width: 80px;	
+	background: url(/img/2/linkedin.png) no-repeat;
+  background-size: 80px 80px;	
+}
+
+#twitter {
+	height: 80px;
+  width: 80px;	
+	background: url(/img/2/twitter.png) no-repeat;
+  background-size: 80px 80px;	
+}
+
+#github {
+	height: 80px;
+  width: 80px;
+	background: url(/img/2/github.png) no-repeat;
+  background-size: 80px 80px;
+}
+
+.contact a > div {
+	height: 80px;
+	width: 80px;
+	background-size: 80px 80px;
+
+	-webkit-animation: hoverDown ease-in 1;
+	-moz-animation: hoverDown ease-in 1;
+	-o-animation: hoverDown ease-in 1;
+	animation: hoverDown ease-in 1;
+
+	-webkit-animation-duration: 0.2s;
+	-moz-animation-duration: 0.2s;
+	-o-animation-duration: 0.2s;
+	animation-duration: 0.2s;
+
+	-webkit-animation-fill-mode: forwards;
+	-moz-animation-fill-mode: forwards;
+	-o-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+}
+
+.contact a:hover > div {
+	-webkit-animation: hoverUp ease-in 1;
+	-moz-animation: hoverUp ease-in 1;
+	-o-animation: hoverUp ease-in 1;
+	animation: hoverUp ease-in 1;
+
+	-webkit-animation-duration: 0.2s;
+	-moz-animation-duration: 0.2s;
+	-o-animation-duration: 0.2s;
+	animation-duration: 0.2s;
+
+	-webkit-animation-fill-mode: forwards;
+	-moz-animation-fill-mode: forwards;
+	-o-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+}
+
+#menu {
+	font-size: 2em;
+	font-weight: 400;
+	margin: 1em 0em 0em 1em;
+
+	-webkit-animation-delay: 0.6s;
+	-moz-animation-delay: 0.6s;
+	-o-animation-delay: 0.6s;
+	animation-delay: 0.6s;
+}
+
+#menu span {
+	padding-left: 1.3em;
+}
+
+#menu span.first {
+	padding-left: 0.5em;
+}
+
+#menu a {
+	text-decoration: none;
+	color: #F1F1F1;	
+}
+
+#menu a:hover {
+	color: white;
+}
+
+@-webkit-keyframes content { from {height: 0%;} to {height: 100%;}}
+@-moz-keyframes content { from {height: 0%;} to {height: 100%;}}
+@-o-keyframes content { from {height: 0%;} to {height: 100%;}}
+@keyframes content { from {height: 0%;} to {height: 100%;}}
+
+#main-background {
+	position: fixed;
+	background-color: #33869E;	
+	top: 275px;
+	height: 0%;
+	width: 100%;
+	z-index: -1;
+	font-color: black;
+
+	-webkit-animation: content ease-in 1;
+	-moz-animation: content ease-in 1;
+	-o-animation: content ease-in 1;
+	animation: content ease-in 1;
+
+	-webkit-animation-duration: 0.3s;
+	-moz-animation-duration: 0.3s;
+	-o-animation-duration: 0.3s;
+	animation-duration: 0.3s;
+
+	-webkit-animation-delay: 1.3s;
+	-moz-animation-delay: 1.3s;
+	-o-animation-delay: 1.3s;
+	animation-delay: 1.3s;
+
+	-webkit-animation-fill-mode: forwards;
+	-moz-animation-fill-mode: forwards;
+	-o-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+}
+
+#content-background {
+	position: fixed;
+	background-color: white;	
+	top: 95px;
+	height: 100%;
+	width: 100%;
+	z-index: -1;
+	font-color: black;	
+}
+
+#content {
+	width: 800px;
+	margin: 0px auto;
+	padding: 2.0em 1em 1em 1em;
+	color: #3F3F3F;
+
+	-webkit-animation-delay: 1.3s;
+	-moz-animation-delay: 1.3s;
+	-o-animation-delay: 1.3s;
+	animation-delay: 1.3s;
+}
+
+h2 {
+	color: #5F5F5F;
+	margin: 0.2em 0em 0.5em 0em;
+	font-size: 2.4em;
+}
+
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-o-keyframes fadeIn { from {opacity:0; } to {opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.fade-in {
+  opacity:0;
+  -webkit-animation:fadeIn ease-in 1;
+  -moz-animation:fadeIn ease-in 1;
+  -o-animation:fadeIn ease-in 1;
+  animation:fadeIn ease-in 1;
+
+  -webkit-animation-fill-mode:forwards;
+  -moz-animation-fill-mode:forwards;
+  -o-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+
+  -webkit-animation-duration:1s;
+  -moz-animation-duration:1s;
+  -o-animation-duration: 1s;
+  animation-duration:1s;
+}
+
+@-webkit-keyframes slideIn {from { visibility: visible; -webkit-transform: translate3d(200px,0px,0px)} to {visibility: visible; -webkit-tranform: translate3d(0px,0px,0px);}}
+@-moz-keyframes slideIn {from { visibility: visible; -moz-transform: translate3d(200px,0px,0px);} to {visibility: visible; -moz-transform: translate3d(0px,0px,0px);}}
+@-o-keyframes slideIn {from { visibility: visible; -o-transform: translate3d(200px,0px,0px);} to { visibility: visible; -o-transform: translate3d(0px,0px,0px);}}
+@keyframes slideIn { from { visibility: visible; transform: translate3d(200px,0px,0px);} to { visibility: visible; transform: translate3d(0px,0px,0px);}}
+
+.slide-in {
+	visibility: hidden;
+	-webkit-animation:slideIn cubic-bezier(0,1.2,.85,1.05) 1;
+	-moz-animation:slideIn cubic-bezier(0,1.2,.85,1.05) 1;
+	-o-animation:slideIn cubic-bezier(0,1.2,.85,1.05) 1;
+	animation:slideIn cubic-bezier(0,1.2,.85,1.05) 1;
+
+  -webkit-animation-fill-mode:forwards;
+  -moz-animation-fill-mode:forwards;
+  -o-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+
+	-webkit-animation-duration:0.3s;
+	-moz-animation-duration:0.3s;
+	-o-animation-duration:0.3s;
+	animation-duration:0.3s;
+
+	-webkit-animation-delay: 0.7s;
+	-moz-animation-delay: 0.7s;
+	-o-animation-duration:0.3s;
+	animation-duration:0.3s;
+}
+
+.hidden {
+	display: none;
+}
+
+.anchor-right {
+	position: fixed;
+	right: 1.5em;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  #facebook {
+  	height: 80px;
+  	width: 80px;
+    background: url(/img/2/facebook@2x.png) no-repeat;
+    background-size: 80px 80px;
+  }
+  #linkedin {
+  	height: 80px;
+  	width: 80px;
+  	background: url(/img/2/linkedin@2x.png) no-repeat;
+  	background-size: 80px 80px;
+  }
+  #twitter {
+  	height: 80px;
+  	width: 80px;
+  	background: url(/img/2/twitter@2x.png) no-repeat;
+  	background-size: 80px 80px;
+  }
+  #github {
+  	height: 80px;
+  	width: 80px;
+  	background: url(/img/2/github@2x.png) no-repeat;
+  	background-size: 80px 80px;
+  }
+}
+
+@media only screen and (max-device-width: 768px) and (min-device-height: 1024px) {
+	.contact a > div {-webkit-animation: none}
+	.contact a:hover > div {-webkit-animation: none}
+
+	#content {
+		width: 500px;
+	}
+}
+
+@media only screen and (max-width: 770px) and (min-width: 510px) {
+	#heading {
+		font-size: 4.0em;
+	}
+
+	#facebook {
+		height: 60px;
+		width: 60px;
+		background-size: 60px 60px;
+	}
+
+	#linkedin {
+		height: 60px;
+		width: 60px;
+		background-size: 60px 60px ;
+	}
+
+	#twitter {
+		height: 60px;
+		width: 60px;
+		background-size: 60px 60px;
+	}
+
+	#github {
+		height: 60px;
+		width: 60px;
+		background-size: 60px 60px;
+	}	
+
+	#contact {
+		margin-left: 1.3em;
+	}
+	#main-background {
+		top: 180px;
+	}
+
+	#menu {
+		font-size: 1.5em;
+		margin: 1em 0em 0em 1em;			
+	}
+
+}
+
+
+@media only screen and (max-device-width : 320px) and (min-device-height : 480px) { 
+	.contact a > div {-webkit-animation: none}
+	.contact a:hover > div {-webkit-animation: none}
+
+	#heading {
+		margin-top: 0.75em;
+		margin-left: 0.2em;
+		font-size: 2.7em;
+	}	
+
+	#contact {
+		margin-left: 0.1em;
+	}
+
+	.contact {
+		padding-left: 0.5em ;
+	}
+
+	#facebook {
+		height: 40px;
+		width: 40px;
+		background-size: 40px 40px;
+	}
+
+	#linkedin {
+		height: 40px;
+		width: 40px;
+		background-size: 40px 40px ;
+	}
+
+	#twitter {
+		height: 40px;
+		width: 40px;
+		background-size: 40px 40px;
+	}
+
+	#github {
+		height: 40px;
+		width: 40px;
+		background-size: 40px 40px;
+	}
+
+	#main-background {
+		top: 120px;
+	}
+
+	#menu {
+		font-size: 1em;
+		margin: 0.75em 0em 0em 0.5em;			
+}
