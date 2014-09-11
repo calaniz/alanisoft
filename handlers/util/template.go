@@ -2,11 +2,20 @@ package util
 
 import (
 	"log/syslog"
+	"os"
 	"github.com/drbawb/mustache"
 )
 
 var logger, _ = syslog.New(syslog.LOG_NOTICE | syslog.LOG_LOCAL1, "alanisoft-handler")
 type MustacheContext map[string]interface{}
+
+func GetConfigKey(key string, def string) string {
+	val := os.Getenv(key)
+	if val == "" {
+		val = def
+	}
+	return val
+}
 
 func NewMustacheContext(context []map[string]interface{}) map[string]interface{} {
 	var ctx map[string]interface{} = nil
@@ -20,11 +29,11 @@ func NewMustacheContext(context []map[string]interface{}) map[string]interface{}
 }
 
 func T(t string) string {
-	return "public/js" + t
+	return GetConfigKey("GOPATH", "/gopath") + "/src/github.com/calaniz/alanisoft/public/js" + t
 }
 
 func L(l string) string {
-	return "public/js/layouts" + l
+	return GetConfigKey("GOPATH", "/gopath") + "/src/github.com/calaniz/alanisoft/public/js/layouts" + l
 }
 
 func RenderIndex(content string, context ...map[string]interface{}) []byte {

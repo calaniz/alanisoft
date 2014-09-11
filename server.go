@@ -24,16 +24,9 @@ func main() {
 	} else {
 		r := NewRouter()
 		r.Handle("/", handlers.AppHandler(handlers.GetMain)).Methods("GET")
-		r.Handle("/blog", handlers.AppHandler(handlers.GetBlog)).Methods("GET")
 		http.Handle("/", logging.CombinedLoggingHandler(logger, r))
 
-		go func() {
-			// Uncomment after we buy a TLS Cert
-			// if err := http.ListenAndServeTLS(":10443", "./cert/cert.crt", "./cert/key.pem", nil); err != nil {
-			// 	logger.Crit(err.Error())
-			// }
-		}()
-		if err := http.ListenAndServe(":9001", nil); err != nil {
+		if err := http.ListenAndServe(":8080", nil); err != nil {
 			logger.Crit(err.Error())
 		}
 	}
