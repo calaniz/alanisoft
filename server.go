@@ -27,8 +27,13 @@ func main() {
 		r := NewRouter(logger)
 		r.Handle("/", handlers.AppHandler(handlers.GetMain)).Methods("GET")
 		http.Handle("/", logging.CombinedLoggingHandler(logger, r))
-
-		if err := http.ListenAndServe(":8080", nil); err != nil {
+		go func() {
+			if err := http.ListenAndServeTLS(":49155", util.GetConfigKey("GOPATH", "/gopath") + "/src/github.com/calaniz/alanisoft/ssl/alanisoft.com.cert",
+				util.GetConfigKey("GOPATH", "/gopath") + "/src/github.com/calaniz/alanisoft/ssl/alanisoft.com.key", nil); err != nil {
+				logger.Crit(err.Error())
+			}
+		}()
+		if err := http.ListenAndServe(":49154", nil); err != nil {
 			logger.Crit(err.Error())
 		}
 	}

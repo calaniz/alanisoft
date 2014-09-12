@@ -1,6 +1,6 @@
 define('main', 
-	["text!main/main.html", "logger", "backbone"], 
-	function(Template, Logger, Backbone) {
+	["text!main/main.html", "logger", "backbone", "mustache"], 
+	function(Template, Logger, Backbone, Mustache) {
 		return {View: Backbone.View.extend({
 			el: "#app",
 			template: Template,

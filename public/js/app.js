@@ -21,14 +21,15 @@ require.config({
   },
   map: {
     "*": {
+      "backbone": "backbone-1.1.2",
+      "underscore": "underscore-1.5.1",
       "logger": "logger-0.9.2",
       "mustache": "mustache-1.0.0",
       "text": "text-2.0.10",
     }
-  }
+  },
   packages: [
     "main",
-    "blog",
     "router"
   ]
 })
@@ -36,7 +37,6 @@ require.config({
 require([
   "router",
   "logger",  
-  "bootstrap"
   ], function(Router, Logger) {
     Logger.useDefaults(Logger.DEBUG);
     Logger.info("[alanisoft] loaded");
