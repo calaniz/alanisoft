@@ -13,7 +13,6 @@ import logging "github.com/gorilla/handlers"
 func NewRouter(logger *syslog.Writer) *mux.Router {
 	r := mux.NewRouter()
 	r.HandleFunc("/{name:[a-zA-Z0-9@/\\-_\\.]+.(js|css|html|json|png|svg|tff|woff|eot)$}", func(w http.ResponseWriter, r *http.Request) {
-		logger.Info(util.GetConfigKey("GOPATH", "/gopath") + "/src/github.com/calaniz/alanisoft/public"+r.URL.Path)
 		http.ServeFile(w, r, util.GetConfigKey("GOPATH", "/gopath") + "/src/github.com/calaniz/alanisoft/public"+r.URL.Path)
 	})
 
@@ -27,13 +26,7 @@ func main() {
 		r := NewRouter(logger)
 		r.Handle("/", handlers.AppHandler(handlers.GetMain)).Methods("GET")
 		http.Handle("/", logging.CombinedLoggingHandler(logger, r))
-		go func() {
-			if err := http.ListenAndServeTLS(":443", util.GetConfigKey("GOPATH", "/gopath") + "/src/github.com/calaniz/alanisoft/ssl/alanisoft.com.cert",
-				util.GetConfigKey("GOPATH", "/gopath") + "/src/github.com/calaniz/alanisoft/ssl/alanisoft.com.key", nil); err != nil {
-				logger.Crit(err.Error())
-			}
-		}()
-		if err := http.ListenAndServe(":80", nil); err != nil {
+		if err := http.ListenAndServe(":8080", nil); err != nil {
 			logger.Crit(err.Error())
 		}
 	}
