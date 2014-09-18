@@ -2,6 +2,8 @@
 
 latest=`git rev-parse --short HEAD`
 
+git checkout deploy
+
 ./bin/config --prefix $latest --host=do5izgzd6lf15.cloudfront.net > ./public/js/layouts/app.html.out
 mv ./public/js/layouts/app.html.out ./public/js/layouts/app.html
 
@@ -12,7 +14,6 @@ cd ../../
 git add ./public/js/layouts/app.html
 git add ./public/js/app.min.js
 
-git checkout deploy
 git commit -m "~Deploy Script Update Generated Files~"
 s3cmd put --acl-public --add-header "Cache-Control: max-age=31556900" --recursive -r public/ s3://www.alanisoft.com/$latest/
 git checkout master
