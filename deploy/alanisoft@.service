@@ -1,0 +1,17 @@
+[Unit]
+Description=Alanisoft
+Requires=alanisoft-discovery@%i.service
+After=docker.service
+After=etcd.service
+Before=alanisoft-discovery@%i.service
+
+[Service]
+TimeoutStartSec=0
+EnvironmentFile=/etc/environment
+ExecStartPre=-/usr/bin/docker kill alanisoft%i
+ExecStartPre=-/usr/bin/docker rm alanisoft%i
+ExecStart=/usr/bin/docker run -P --name alanisoft%i calaniz/alanisoft
+ExecStop=/usr/bin/docker stop alanisoft%i
+
+[X-Fleet]
+Conflicts=alanisoft@*.service

@@ -1,0 +1,33 @@
+[Unit]
+Description=Alanisoft Discovery
+Requires=etcd.service
+Requires=alanisoft@%i.service
+
+After=etcd.service
+After=alanisoft@%i.service
+BindsTo=alanisoft@%i.service
+
+[Service]
+EnvironmentFile=/etc/environment
+ExecStart=/bin/bash -c '\
+	etcdctl mkdir /nginx/alanisoft1; \
+	etcdctl set /nginx/alanisoft1/domain "alanisoft.com"; \
+	etcdctl mkdir /nginx/alanisoft2; \
+	etcdctl set /nginx/alanisoft2/domain "alanisoft.co"; \
+	etcdctl set /nginx/alanisoft2/alias "alanisoft.com"; \
+	while true; do \
+		TEMP="{{range \$p, \$conf := .NetworkSettings.Ports}}{{if eq \$p \\"80/tcp\\"}}{{(index \$conf 0).HostPort}}{{end}}{{end}}"; \
+		PORT=`docker inspect -f "$TEMP" alanisoft1`; \
+		curl -f http://$COREOS_PUBLIC_IPV4:$PORT; \
+		if [ $? -eq 0 ]; then \
+			etcdctl set /nginx/alanisoft1/upstream/app%i $COREOS_PUBLIC_IPV4:$PORT; \
+		else \
+			etcdctl rm /nginx/alanisoft1/upstream/app%i; \
+		fi; \
+		sleep 20; \
+	done'
+
+ExecStop=/usr/bin/etcdctl rm /nginx/alanisoft1/upstream/app%i
+
+[X-Fleet]
+MachineOf=alanisoft@%i.service
