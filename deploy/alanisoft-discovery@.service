@@ -16,7 +16,7 @@ ExecStart=/bin/bash -c '\
 	etcdctl set /nginx/alanisoft2/domain "alanisoft.co"; \
 	etcdctl set /nginx/alanisoft2/alias "alanisoft.com"; \
 	while true; do \
-		TEMP="{{range \$p, \$conf := .NetworkSettings.Ports}}{{if eq \$p \\"80/tcp\\"}}{{(index \$conf 0).HostPort}}{{end}}{{end}}"; \
+		TEMP="{{range \$p, \$conf := .NetworkSettings.Ports}}{{if eq \$p \\"8080/tcp\\"}}{{(index \$conf 0).HostPort}}{{end}}{{end}}"; \
 		PORT=`docker inspect -f "$TEMP" alanisoft1`; \
 		curl -f http://$COREOS_PUBLIC_IPV4:$PORT; \
 		if [ $? -eq 0 ]; then \
