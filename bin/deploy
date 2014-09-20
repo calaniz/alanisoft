@@ -1,8 +1,9 @@
 #!/bin/bash
 
-latest=`git rev-parse --short HEAD`
 
-./bin/config --prefix $latest --host=do5izgzd6lf15.cloudfront.net > ./public/js/layouts/app.html.out
+latest=`git rev-parse --short HEAD`
+host='do5izgzd6lf15.cloudfront.net'
+./bin/config --prefix $latest --host=$host > ./public/js/layouts/app.html.out
 mv ./public/js/layouts/app.html.out ./public/js/layouts/app.html
 
 cd public/js
@@ -11,11 +12,12 @@ cd ../../
 
 sed 's/url(\/\(.......\)\/\(.*\)/url(\/\2/g' public/css/main.css > public/css/main.css.out
 mv public/css/main.css.out public/css/main.css
-sed "s/url(/url(\/$latest/g" public/css/main.css > public/css/main.css.out
+sed "s/url(/url(\/\/$host\/$latest/g" public/css/main.css > public/css/main.css.out
 mv public/css/main.css.out public/css/main.css
 
 git add ./public/js/layouts/app.html
 git add ./public/js/app.min.js
+git add ./public/css/main.css
 
 git commit -m "~Deploy Script Update Generated Files~"
 s3cmd put --acl-public --add-header "Cache-Control: max-age=31556900" --recursive -r public/ s3://www.alanisoft.com/$latest/
