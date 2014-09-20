@@ -43,7 +43,6 @@ define("router", [
 			// yearlyPosts: function(year) {
 			// 	logger.debug("yearly posts routed");
 			// 	this.yearlyView == undefined ? new Blog.YearlyListView().render(year) : this.yearlyView.render(year);
-			},
 		})
 	}
 )
