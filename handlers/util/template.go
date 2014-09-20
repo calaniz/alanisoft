@@ -29,11 +29,21 @@ func NewMustacheContext(context []map[string]interface{}) map[string]interface{}
 }
 
 func T(t string) string {
-	return GetConfigKey("GOPATH", "/gopath") + "/src/github.com/calaniz/alanisoft/public/js" + t
+	gopath := GetConfigKey("GOPATH", "/gopath")
+	if _, err := os.Stat(gopath + "/src/app/public" + r.URL.Path); err == nil {
+		return gopath + "/src/app/public" + t
+	} else {
+		return gopath + "/src/github.com/calaniz/alanisoft/public/js" + t
+	}
 }
 
 func L(l string) string {
-	return GetConfigKey("GOPATH", "/gopath") + "/src/github.com/calaniz/alanisoft/public/js/layouts" + l
+	gopath := GetConfigKey("GOPATH", "/gopath") 
+	if _, err := os.Stat(gopath + "/src/app/public" + r.URL.Path); err == nil {
+		return gopath + "/src/app/public" + l
+	} else {
+		return gopath + "/src/github.com/calaniz/alanisoft/public/js/layouts" + l
+	}
 }
 
 func RenderIndex(content string, context ...map[string]interface{}) []byte {
