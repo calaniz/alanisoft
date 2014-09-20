@@ -1,6 +1,7 @@
 package main
 
 import (
+	"os"
 	"log/syslog"
 	"net/http"
 	"github.com/calaniz/alanisoft/handlers"
@@ -13,7 +14,12 @@ import logging "github.com/gorilla/handlers"
 func NewRouter(logger *syslog.Writer) *mux.Router {
 	r := mux.NewRouter()
 	r.HandleFunc("/{name:[a-zA-Z0-9@/\\-_\\.]+.(js|css|html|json|png|svg|tff|woff|eot)$}", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, util.GetConfigKey("GOPATH", "/gopath") + "/src/github.com/calaniz/alanisoft/public"+r.URL.Path)
+		gopath := util.GetConfigKey("GOPATH", "/gopath")
+		if _, err := os.Stat(gopath + "/src/app/public" + r.URL.Path); err == nil {
+			http.ServeFile(w, r, gopath + "/src/app/public"+r.URL.Path)
+		} else {
+			http.ServeFile(w, r, gopath + "/src/github.com/calaniz/alanisoft/public"+r.URL.Path)
+		}
 	})
 
 	return r
