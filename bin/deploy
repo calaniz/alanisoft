@@ -9,6 +9,11 @@ cd public/js
 node r.js -o build.js
 cd ../../
 
+sed 's/url(\/\(.......\)\/\(.*\)/url(\/\2/g' public/css/main.css > public/css/main.css.out
+mv public/css/main.css.out public/css/main.css
+sed "s/url(/url(\/$latest/g" public/css/main.css > public/css/main.css.out
+mv public/css/main.css.out public/css/main.css
+
 git add ./public/js/layouts/app.html
 git add ./public/js/app.min.js
 
