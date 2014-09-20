@@ -30,7 +30,7 @@ func NewMustacheContext(context []map[string]interface{}) map[string]interface{}
 
 func T(t string) string {
 	gopath := GetConfigKey("GOPATH", "/gopath")
-	if _, err := os.Stat(gopath + "/src/app/public" + r.URL.Path); err == nil {
+	if _, err := os.Stat(gopath + "/src/app/public" + t); err == nil {
 		return gopath + "/src/app/public" + t
 	} else {
 		return gopath + "/src/github.com/calaniz/alanisoft/public/js" + t
@@ -39,7 +39,7 @@ func T(t string) string {
 
 func L(l string) string {
 	gopath := GetConfigKey("GOPATH", "/gopath") 
-	if _, err := os.Stat(gopath + "/src/app/public" + r.URL.Path); err == nil {
+	if _, err := os.Stat(gopath + "/src/app/public" + l); err == nil {
 		return gopath + "/src/app/public" + l
 	} else {
 		return gopath + "/src/github.com/calaniz/alanisoft/public/js/layouts" + l
