@@ -16,11 +16,11 @@ ExecStart=/bin/bash -c '\
 	etcdctl set /nginx/alanisoft2/domain "alanisoft.co"; \
 	etcdctl set /nginx/alanisoft2/alias "alanisoft.com"; \
 	while true; do \
-		TEMP="{{range \$p, \$conf := .NetworkSettings.Ports}}{{if eq \$p \\"8080/tcp\\"}}{{(index \$conf 0).HostPort}}{{end}}{{end}}"; \
+		TEMP="{{range \$p, \$conf := .NetworkSettings.Ports}}{{(index \$conf 0).HostPort}}{{end}}"; \
 		PORT=`docker inspect -f "$TEMP" alanisoft1`; \
-		curl -f http://$COREOS_PUBLIC_IPV4:$PORT; \
+		curl -f http://$COREOS_PRIVATE_IPV4:$PORT; \
 		if [ $? -eq 0 ]; then \
-			etcdctl set /nginx/alanisoft1/upstream/app%i $COREOS_PUBLIC_IPV4:$PORT; \
+			etcdctl set /nginx/alanisoft1/upstream/app%i $COREOS_PRIVATE_IPV4:$PORT; \
 		else \
 			etcdctl rm /nginx/alanisoft1/upstream/app%i; \
 		fi; \
