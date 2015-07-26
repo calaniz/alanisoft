@@ -1,9 +1,9 @@
 [Unit]
 Description=Alanisoft Discovery
-Requires=etcd.service
+Requires=etcd2.service
 Requires=alanisoft@%i.service
 
-After=etcd.service
+After=etcd2.service
 After=alanisoft@%i.service
 BindsTo=alanisoft@%i.service
 
