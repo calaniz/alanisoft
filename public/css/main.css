@@ -95,30 +95,30 @@ body {
 
 #facebook {
 	height: 80px;
-  width: 80px;
+  	width: 80px;
 	background: url(/img/facebook.png) no-repeat;
-  background-size: 80px 80px;	
+  	background-size: 80px 80px;	
 }
 
 #linkedin {
 	height: 80px;
-  width: 80px;	
+  	width: 80px;	
 	background: url(/img/linkedin.png) no-repeat;
   background-size: 80px 80px;	
 }
 
 #twitter {
 	height: 80px;
-  width: 80px;	
+  	width: 80px;	
 	background: url(/img/twitter.png) no-repeat;
-  background-size: 80px 80px;	
+  	background-size: 80px 80px;	
 }
 
 #github {
 	height: 80px;
-  width: 80px;
+  	width: 80px;
 	background: url(/img/github.png) no-repeat;
-  background-size: 80px 80px;
+  	background-size: 80px 80px;
 }
 
 .contact a > div {
@@ -314,8 +314,8 @@ h2 {
   #facebook {
   	height: 80px;
   	width: 80px;
-    background: url(/img/facebook@2x.png) no-repeat;
-    background-size: 80px 80px;
+    	background: url(/img/facebook@2x.png) no-repeat;
+    	background-size: 80px 80px;
   }
   #linkedin {
   	height: 80px;
