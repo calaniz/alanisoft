@@ -30,6 +30,7 @@ require.config({
   },
   packages: [
     "main",
+    "blog",
     "router"
   ]
 })
