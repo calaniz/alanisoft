@@ -2,16 +2,14 @@
 Description=Alanisoft
 Requires=alanisoft-discovery@%i.service
 After=docker.service
-After=etcd.service
+After=etcd2.service
 Before=alanisoft-discovery@%i.service
 
 [Service]
 TimeoutStartSec=0
-EnvironmentFile=/etc/dockerenv
 ExecStartPre=-/usr/bin/docker kill alanisoft%i
 ExecStartPre=-/usr/bin/docker rm alanisoft%i
-ExecStartPre=/bin/bash -c '/usr/bin/docker login --username=$DOCKER_USER --password=$DOCKER_PASSWORD --email=$DOCKER_EMAIL; \
-	/usr/bin/docker pull calaniz/alanisoft;'
+ExecStartPre=/usr/bin/docker pull calaniz/alanisoft
 ExecStart=/usr/bin/docker run -P --name alanisoft%i calaniz/alanisoft
 ExecStop=/usr/bin/docker stop alanisoft%i
 
